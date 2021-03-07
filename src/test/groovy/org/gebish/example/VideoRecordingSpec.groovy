@@ -1,15 +1,8 @@
 package org.gebish.example
 
-import geb.spock.GebSpec
+import geb.spock.GebReportingSpec
 
-class VideoRecordingSpec extends GebSpec {
-
-    def cleanup() {
-        def testcontainersWebDriver = driver as TestcontainersWebDriver
-        testcontainersWebDriver.afterTest(
-                specificationContext.currentIteration.name, specificationContext.currentSpec.name
-        )
-    }
+class VideoRecordingSpec extends GebReportingSpec {
 
     def 'go to gebish.org'() {
         expect:
@@ -19,5 +12,6 @@ class VideoRecordingSpec extends GebSpec {
     def 'go to spockframework.org'() {
         expect:
         browser.go('https://spockframework.org/')
+        sleep 1000
     }
 }
